@@ -37,3 +37,18 @@ export function createUser(name, email, role){
     return newUser
 }
 
+export function updateUser(id, name, email, role){
+  const user = users.find(u => u.id === Number(id));
+  if(!user) return null;
+  
+  user.name = name;
+  user.email = email;
+  user.role = role;
+  return user;
+}
+
+export function deleteUser(id){
+  const index = users.findIndex(u => u.id === Number(id));
+  if(index === -1) return null;
+  return users.splice(index, 1)[0];
+}
